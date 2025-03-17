@@ -1,31 +1,17 @@
-name = "go-container-starter"
+name = "go-container-starter-gabi"
 main = "src/index.js"
 compatibility_date = "2025-03-10"
 
 [observability]
 enabled = true
 
-# what we'll drive towards
-
-# [[containers]]
-# instance_type = "basic"
-# sleep_after = "1m"
-# class_name = "MyContainer"
-# binding = "MY_CONTAINER"
-# image = "./Dockerfile"
-# # max_instances = 20
-
 [[containers]]
-instances = 5
-name = "go-hi"
+instances = 10
+name = "go-hi-gabi"
 class_name = "MyContainer"
 
-# FILL IN YOUR NAMESPACE ID HERE:
-[containers.durable_objects]
-namespace_id = "b872506f17c74d2e9117e84033873dc9"
-
 [containers.configuration]
-image = "registry.cloudchamber.cfdata.org/container-starter-go:1.0"
+image = "."
 network = { mode = "private" }
 
 [[durable_objects.bindings]]
