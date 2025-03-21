@@ -46,11 +46,34 @@ export class MyContainer extends DurableObject {
   constructor(ctx, env) {
     super(ctx, env);
     ctx.blockConcurrencyWhile(async () => {
+      console.log(
+        this.ctx.id.toString(),
+        "constructor: is container defined?",
+        this.ctx.container !== undefined,
+      );
       await startAndWaitForPort(ctx.container, OPEN_CONTAINER_PORT);
+      await this.ctx.storage.setAlarm(Date.now());
     });
   }
 
   async fetch(request) {
+    console.log(
+      this.ctx.id.toString(),
+      "fetch: is container defined?",
+      this.ctx.container !== undefined,
+    );
     return await proxyFetch(this.ctx.container, request, OPEN_CONTAINER_PORT);
+  }
+
+  async alarm() {
+    try {
+      console.log(
+        this.ctx.id.toString(),
+        "Alarm: is container defined?",
+        this.ctx.container !== undefined,
+      );
+    } finally {
+      this.ctx.storage.setAlarm(Date.now() + 1500);
+    }
   }
 }

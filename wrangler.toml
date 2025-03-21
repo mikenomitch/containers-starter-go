@@ -29,5 +29,5 @@ name = "hello-containers-go"
 class_name = "MyContainer"
 
 [containers.configuration]
-image = "."
+image = "./Dockerfile"
 network = { mode = "private" }
