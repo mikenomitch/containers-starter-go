@@ -1,4 +1,4 @@
-name = "container-starter"
+name = "container-starter-gabi"
 main = "src/index.js"
 compatibility_date = "2025-03-10"
 
@@ -24,7 +24,7 @@ new_sqlite_classes = ["MyContainer"]
 
 # What is required today is below:
 [[containers]]
-instances = 5
+max_instances = 3
 name = "hello-containers-go"
 class_name = "MyContainer"
 

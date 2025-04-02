@@ -10,7 +10,8 @@ export async function startAndWaitForPort(
   for (let i = 0; i < maxTries; i++) {
     try {
       if (!container.running) {
-        container.start();
+        console.log("hey this is enable internet...");
+        container.start({ enableInternet: true });
 
         // force DO to keep track of running state
         monitor = container.monitor();
